@@ -1,13 +1,13 @@
 import React from 'react';
 
 import styles from './App.module.css';
-import WhiteCloudDiv from './components/WhiteCloudDiv';
+import UsernameAgeForm from './components/UsernameAgeForm';
 
-function App() {
+const App = () => {
   return (
     <div className={styles.blackground}>
-      <WhiteCloudDiv />
-      <WhiteCloudDiv />
+      <UsernameAgeForm />
+      <UsernameAgeForm />
     </div> 
   );
 }
