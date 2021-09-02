@@ -14,10 +14,10 @@ const UsernameAgeForm = () => {
             <br />
             <br />
             <label className={styles.labelSpacing}>Age:</label>
-            <input type="text" />
+            <input type="number" min="1" step="1" />
             <br />
             <br />
-            <Button />
+            <Button text="Add User" />
         </WhiteCloudDiv>
     );
 };
