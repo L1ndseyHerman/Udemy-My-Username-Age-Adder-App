@@ -1,3 +1,11 @@
 .centeredStuff {
   text-align: center;
+  font-size: 125%;
+}
+.labelSpacing {
+  margin-right: 1em;
+}
+.textboxPadding {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }

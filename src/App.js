@@ -7,7 +7,6 @@ const App = () => {
   return (
     <div className={styles.blackground}>
       <UsernameAgeForm />
-      <UsernameAgeForm />
     </div> 
   );
 }
