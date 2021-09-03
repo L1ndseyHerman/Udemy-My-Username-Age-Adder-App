@@ -9,9 +9,13 @@ import OneUser from './components/OneUser';
 const App = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [users, setUsers] = useState([]);
 
   const submitHandler = (submitData) => {
     setErrorMessage(submitData.errorMessage);
+    setUsers(() => {
+      return [{id: submitData.id, username: submitData.enteredUsername, age: submitData.enteredAge}, ...users];
+    });
   };
 
   const closeHandler = (closeData) => {
@@ -24,8 +28,13 @@ const App = () => {
       <WhiteCloudDiv 
         className={`${errorMessage !== "" ? styles.hideErrorMessage : styles.showErrorMessage}`}
       >
-        <OneUser />
-        <OneUser />
+        {users.map(user => (
+          <OneUser
+            key={user.id}
+            username={user.username} 
+            age={user.age} 
+          />
+        ))}
       </WhiteCloudDiv>
       <ErrorMessage 
         className={`${errorMessage === "" ? styles.hideErrorMessage : styles.showErrorMessage}`}

@@ -58,7 +58,10 @@ const UsernameAgeForm = (props) => {
             setErrorMessage("Please enter a positive number for the age. ");
         }
 
+        const id = Math.random.toString()
+
         props.callback({
+            id: id,
             enteredUsername: enteredUsername, 
             enteredAge: enteredAge,
             errorMessage: errorMessage
