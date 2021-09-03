@@ -5,7 +5,7 @@ import styles from './OneUser.module.css';
 
 const OneUser = (props) => {
     return (
-        <p className={styles.centeredStuff}>Username: {props.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Age: {props.age}</p>
+        <p className={styles.centeredStuff}>Username: {props.username}&nbsp;&nbsp;&nbsp; Age: {props.age}</p>
     );
 };
 

@@ -12,10 +12,26 @@ const App = () => {
   const [users, setUsers] = useState([]);
 
   const submitHandler = (submitData) => {
-    setErrorMessage(submitData.errorMessage);
-    setUsers([
-      {id: submitData.id, username: submitData.enteredUsername, age: submitData.enteredAge},
-       ...users]);
+    if (submitData.enteredUsername === '')
+    {
+      setErrorMessage("Please enter a username. ");
+    }
+    //  Idk what should be allowed for a username, going to go w 30 char:
+    else if (submitData.enteredUsername.length > 30)
+    {
+      setErrorMessage("Please enter a username that is less than 30char. ");
+    }
+    else if ((isNaN(submitData.enteredAge)) || (submitData.enteredAge <= 0))
+    {
+      setErrorMessage("Please enter a positive number for the age. ");
+    }
+    else 
+    {
+      setUsers([
+        {id: submitData.id, username: submitData.enteredUsername, age: submitData.enteredAge},
+         ...users]);
+      setErrorMessage("");
+    }
   };
 
   const closeHandler = (closeData) => {
