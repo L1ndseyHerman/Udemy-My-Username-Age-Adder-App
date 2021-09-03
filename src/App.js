@@ -13,9 +13,9 @@ const App = () => {
 
   const submitHandler = (submitData) => {
     setErrorMessage(submitData.errorMessage);
-    setUsers(() => {
-      return [{id: submitData.id, username: submitData.enteredUsername, age: submitData.enteredAge}, ...users];
-    });
+    setUsers([
+      {id: submitData.id, username: submitData.enteredUsername, age: submitData.enteredAge},
+       ...users]);
   };
 
   const closeHandler = (closeData) => {
