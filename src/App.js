@@ -7,25 +7,9 @@ import ErrorMessage from './components/ErrorMessage';
 const App = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
-  //const [hasError, setHasError] = useState(false);
-
-  //let errorMessage = "";
-  //let hasError = false;
-
 
   const submitHandler = (submitData) => {
     setErrorMessage(submitData.errorMessage);
-    //errorMessage = submitData.errorMessage;
-    /*if (errorMessage === "")
-    {
-      setHasError(false);
-      //hasError = false;
-    }
-    else 
-    {
-      setHasError(true);
-      //hasError = true;
-    }*/
   };
 
   const closeHandler = (closeData) => {
