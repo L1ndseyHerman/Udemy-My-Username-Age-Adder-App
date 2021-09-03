@@ -1,23 +1,82 @@
-import React from 'react';
+ /* eslint-disable react/prop-types */
+import React, {useState} from 'react';
 
 import styles from './UsernameAgeForm.module.css';
 
 import WhiteCloudDiv from './UI/WhiteCloudDiv';
 import Button from './UI/Button';
 
+const UsernameAgeForm = (props) => {
 
-const UsernameAgeForm = () => {
+    const [enteredUsername, setEnteredUsername] = useState('');
+    const [enteredAge, setEnteredAge] = useState('')
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const usernameChangeHandler = (event) => {
+        setEnteredUsername(event.target.value);
+        if (event.target.value.toString().length < 1)
+        {
+            setErrorMessage(errorMessage + "Please enter a username. ");
+        }
+        //  Idk what should be allowed for a username, going to go w 30 char:
+        else if (event.target.value.toString().length > 30)
+        {
+            setErrorMessage(errorMessage + "Please enter a username that is less than 30char. ");
+        }
+        else 
+        {
+            setErrorMessage(errorMessage + "");
+        }
+    };
+
+    const ageChangeHandler = (event) => {
+        setEnteredAge(event.target.value);
+        //  This checks for < 0 or a String, including the empty string, at the same time.
+        if ((isNaN(event.target.value)) || (event.target.value <= 0))
+        {
+            setErrorMessage(errorMessage + "Please enter a positive number for the age. ");
+        }
+        else 
+        {
+            setErrorMessage(errorMessage + "");
+        }
+    };
+
+    const submitHandler = (event) => {
+
+        //  Maybe this will stop it from being 1 behind?
+        usernameChangeHandler;
+        ageChangeHandler;
+
+        //  The thing that prevents the page refreshing in React only:
+        event.preventDefault();
+
+        //  Hmm... I could handle the error here or in App.js. Going to do it in App.js.
+        props.callback({
+            enteredUsername: enteredUsername, 
+            enteredAge: enteredAge,
+            errorMessage: errorMessage
+        });
+
+        //  Because this is bound to the "value" property of the input, this will clear the input!
+        setEnteredUsername('');
+        setEnteredAge('');
+        setErrorMessage("");
+    };
+
     return (
         <WhiteCloudDiv className={styles.centeredStuff}>
-            <label className={styles.labelSpacing}>Username:</label>
-            <input type="text" />
-            <br />
-            <br />
-            <label className={styles.labelSpacing}>Age:</label>
-            <input type="number" min="1" step="1" />
-            <br />
-            <br />
-            <Button text="Add User" />
+            <form onSubmit={submitHandler}>
+                <label className={styles.labelSpacing}>Username:</label>
+                <input type="text" value={enteredUsername} onChange={usernameChangeHandler} />
+                <br />
+                <br />
+                <label className={styles.labelSpacing}>Age:</label>
+                <input type="text" value={enteredAge} onChange={ageChangeHandler} />
+                <br />
+                <br />
+                <Button text="Add User" />
+            </form>
         </WhiteCloudDiv>
     );
 };

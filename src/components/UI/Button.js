@@ -5,7 +5,7 @@ import styles from './Button.module.css';
 
 const Button = (props) => {
     return (
-        <button className={styles.button}>{props.text}</button>
+        <button className={styles.button} type="submit">{props.text}</button>
     );
 };
 
