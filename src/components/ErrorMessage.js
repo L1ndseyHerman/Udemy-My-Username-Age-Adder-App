@@ -7,11 +7,25 @@ import WhiteCloudDiv from './UI/WhiteCloudDiv';
 import Button from './UI/Button';
 
 const ErrorMessage = (props) => {
+
+    const classes = styles.centeredStuff + " " + props.className;
+
+    const closeHandler = (event) => {
+        //  The thing that prevents the page refreshing in React only:
+        event.preventDefault();
+
+        props.callback({
+            errorMessage: ""
+        });
+    };
+
     return (
-        <WhiteCloudDiv className={styles.centeredStuff}>
-            <h2 className={styles.h2}>Error</h2>
-            <p>{props.errorMessage}</p>
-            <Button text="Okay" />
+        <WhiteCloudDiv className={classes}>
+            <form onSubmit={closeHandler}>
+                <h2 className={styles.h2}>Error</h2>
+                <p>{props.errorMessage}</p>
+                <Button text="Okay" />
+            </form>
         </WhiteCloudDiv>
     );
 };
